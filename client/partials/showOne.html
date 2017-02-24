@@ -1,0 +1,11 @@
+<div ng-controller="sessionController">
+    <div ng-controller="itemController">
+        <div class="header">
+            <h1>{{showOne[0].title}}'s Bucket List</h1>
+        </div>
+        <div class="mainContent">
+           <p ng-repeat="q in showOne">
+               {{q.content}}</p>
+        </div>
+    </div>
+</div>

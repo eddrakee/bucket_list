@@ -1,0 +1,40 @@
+<div ng-controller="sessionController">
+    <div class="header">
+        <h1>Welcome, {{currentUser.name}}</h1>
+    </div>
+    <a href="/logout">Logout</a>
+    <a href="#!/dashboard">Home</a>
+    <div class="mainContent" ng-controller="itemController">
+            <div class="error" ng-repeat='error in errors track by $index'>
+                <p>{{error}}</p>
+            </div>
+            <form ng-submit="addItem(currentUser._id)">
+                <h2>Add a new item</h2>
+                <input type="text" ng-model="newBucket.title" placeholder="Title">
+                <input type="text" ng-model="newBucket.content" placeholder="Description">
+                <select>
+                    <option value="Item1" ng-repeat="item in items">{{item._user}}</option>
+                </select>
+                <input type="submit" value="Add to List">
+            </form>
+        
+    </div>
+    <div class="mainContent" ng-controller ="itemController">
+            <h2>Before I die I want to...</h2>
+            <ul>
+                <li ng-repeat="item in items">
+                    <input type="checkbox" ng-click="changeStat(item)"ng-model="newBucket.status">
+                    USER ID: {{item._user}}| 
+                    {{item.title}} - 
+                    {{item.content}} - 
+                    {{item.createdAt | amCalendar:referenceTime:formats}}
+                </li>
+            </ul>
+            <h2>List of Other Users</h2>
+                <div ng-repeat = "item in items">
+                        {{item._user}}
+                </div>
+            
+          
+        </div>
+</div>
